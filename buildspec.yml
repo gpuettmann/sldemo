@@ -5,6 +5,7 @@ phases:
     commands:
       - echo Build started on `date`
       - mvn package
+      - aws s3 ls > tmp.txt
       - aws cloudformation package --template-file template.yaml --s3-bucket gpfanout --output-template-file newtemplate.yaml
     post_build:
       - echo Build completed on `date`
@@ -12,3 +13,4 @@ artifacts:
   files: 
     - target/lambda-java-example-1.0-SNAPSHOT.jar
     - newtemplate.yaml  
+    - tmp.txt
