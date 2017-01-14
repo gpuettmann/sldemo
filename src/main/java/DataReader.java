@@ -52,7 +52,7 @@ public class DataReader implements RequestStreamHandler {
 			JSONParser jsonParser = new JSONParser();
 			JSONObject jsonObject = (JSONObject)jsonParser.parse(new InputStreamReader(inputStream, "UTF-8"));
 			
-			System.out.println("readRecords: " + jsonObject);
+			System.out.println("Call readRecords: " + jsonObject);
 
 			String bucketName = (String) jsonObject.get("bucketName");
 			String fileName = (String) jsonObject.get("fileName");
