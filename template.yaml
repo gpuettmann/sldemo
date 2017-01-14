@@ -1,0 +1,20 @@
+﻿AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'
+Description: An AWS Serverless Specification template describing your function.
+Resources:
+  fanout:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      Handler: 'fanout.DataFinder::handleRequest'
+      Runtime: java8
+      CodeUri: ./
+      Description: ''
+      MemorySize: 1024
+      Timeout: 100
+      Role: 'arn:aws:iam::310073746091:role/gp-lambda-s3-execution-role'
+      Events:
+        Api1:
+          Type: Api
+          Properties:
+            Path: /analytics/{proxy+}
+            Method: ANY
