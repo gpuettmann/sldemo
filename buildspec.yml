@@ -4,10 +4,9 @@ phases:
   build:
     commands:
       - echo Build started on `date`
-      - mvn test
+      - mvn package
     post_build:
       - echo Build completed on `date`
-      - mvn package
 artifacts:
   files: target/lambda-java-example-1.0-SNAPSHOT.jar
       
